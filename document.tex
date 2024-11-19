@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt,twoside]{article}
+
+% Include preamble
+\input{preamble}
+
+\begin{document}
+
+% Title Page
+\input{title}
+\newpage
+
+% Start using the custom page style
+\pagestyle{toc}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+\pagebreak
+
+\pagestyle{main}
+
+\section{Introduction}
+
+\pagebreak
+
+\section{Methodology}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|lccccc|}
+        \hline
+        \rowcolor{orange} \textbf{Operation} & \textbf{Symbol} & \textbf{Example} & & & \\ 
+        \hline
+        Suma & + & $4 + 4 = 8$ & & & \\
+        \hline
+        Resta & - & $4 - 2 = 2$ & & & \\
+        \hline
+        Multiplicación & * & $4 * 4 = 16$ & & & \\
+        \hline
+    \end{tabular}
+    \caption{Random numeric values for different parameters}
+    \label{tab:aritmetic_operations}
+\end{table}
+
+\pagebreak
+
+\section{Results}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|cccccc|}
+        \hline
+        \rowcolor{orange} & Temperature & Volume & Size & Age & Total \\
+        \hline
+        1 & 23.5 & 45.2 & 12.3 & 5 & 86.0 \\
+        \hline
+        2 & 25.1 & 47.8 & 13.1 & 6 & 92.0 \\
+        \hline
+        3 & 22.8 & 44.5 & 11.9 & 4 & 83.2 \\
+        \hline
+        4 & 24.3 & 46.7 & 12.8 & 5 & 89.8 \\
+        \hline
+        5 & 23.9 & 45.9 & 12.5 & 5 & 87.8 \\
+        \hline
+    \end{tabular}
+    \caption{Random numeric values for different parameters}
+    \label{tab:random_values}
+\end{table}
+
+\lstinputlisting[language=Python, style=darkula, caption={Example Python Code}]{example.py}
+
+\pagebreak
+
+\section{Discussion}
+
+\pagebreak
+
+\section{Conclusion}
+
+\pagebreak
+
+\bibliography{references}
+
+\end{document}
