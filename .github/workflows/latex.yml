@@ -21,7 +21,7 @@ jobs:
       with:
         root_file: document.tex
         compiler: pdflatex
-        args: -pdf -interaction=nonstopmode
+        args: -interaction=nonstopmode
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
@@ -29,9 +29,20 @@ jobs:
         name: compiled-document
         path: document.pdf
 
+    - name: Create Git Tag
+      id: tag
+      run: |
+        TAG_NAME="release-$(date +'%Y%m%d%H%M%S')"
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
+
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
         files: document.pdf
+        tag_name: ${{ env.TAG_NAME }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
