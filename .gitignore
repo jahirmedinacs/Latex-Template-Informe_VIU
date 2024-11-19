@@ -1,0 +1,13 @@
+document.aux
+document.auxlock
+
+document.fdb_latexmk
+document.fls
+document.lof
+document.log
+document.lol
+document.lot
+document.out
+document.synctex.gz
+document.toc
+document.xdv

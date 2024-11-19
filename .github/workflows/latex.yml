@@ -1,0 +1,39 @@
+name: Build LaTeX Document
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up TeX Live
+      uses: dante-ev/latex-action@v2
+      with:
+        packages: texlive-full
+
+    - name: Compile LaTeX document
+      run: |
+        latexmk -pdf -interaction=nonstopmode document.tex
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: compiled-document
+        path: document.pdf
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: document.pdf
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
