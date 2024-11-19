@@ -82,9 +82,18 @@
 \def\mydate{\today}
 
 % Page styles
-\fancypagestyle{plain}{\input{addons/header}\input{addons/footer}}
-\fancypagestyle{toc}{\input{addons/header}\input{addons/footer}}
-\fancypagestyle{main}{\input{addons/header}\input{addons/footer}}
+\fancypagestyle{plain}{
+        \input{addons/header}
+        \input{addons/footer}
+    }
+\fancypagestyle{toc}{
+        \input{addons/header}
+        \input{addons/footer}
+    }
+\fancypagestyle{main}{
+        \input{addons/header}
+        \input{addons/footer}
+    }
 
 % Ensure text is justified
 \usepackage{ragged2e}
