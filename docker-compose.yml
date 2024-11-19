@@ -1,0 +1,6 @@
+services:
+  latex:
+    build: .
+    volumes:
+      - .:/workspace
+    command: ["pdflatex", "-interaction=nonstopmode", "document.tex"]
