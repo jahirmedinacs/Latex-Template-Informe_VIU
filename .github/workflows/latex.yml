@@ -16,14 +16,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up TeX Live
+    - name: Compile LaTeX document
       uses: dante-ev/latex-action@latest
       with:
-        packages: texlive-full
-
-    - name: Compile LaTeX document
-      run: |
-        pdflatex -interaction=nonstopmode document.tex
+        root_file: document.tex
+        compiler: pdflatex
+        args: -pdf -interaction=nonstopmode
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
