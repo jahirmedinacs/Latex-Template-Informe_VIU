@@ -23,7 +23,7 @@ jobs:
 
     - name: Compile LaTeX document
       run: |
-        latexmk -pdf -interaction=nonstopmode document.tex
+        pdflatex -pdf -interaction=nonstopmode document.tex
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
