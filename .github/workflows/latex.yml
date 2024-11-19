@@ -29,20 +29,23 @@ jobs:
         name: compiled-document
         path: document.pdf
 
-    - name: Create Git Tag
-      id: tag
-      run: |
-        TAG_NAME="release-$(date +'%Y%m%d%H%M%S')"
-        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
+    # - name: Create Git Tag
+    #   id: tag
+    #   env:
+    #     TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    #   run: |
+    #     TAG_NAME="release-$(date +'%Y%m%d%H%M%S')"
+    #     echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+    #     git config --global user.name "github-actions[bot]"
+    #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    #     git tag $TAG_NAME
+    #     git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $TAG_NAME
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
         files: document.pdf
-        tag_name: ${{ env.TAG_NAME }}
+        # tag_name: ${{ env.TAG_NAME }}
+        tag_name: ${{ github.sha }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
